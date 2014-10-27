@@ -59,4 +59,4 @@ net-misc/openssh -hpn
 sys-fs/squashfs-tools lzo xz
 
 # disable the GUI monitor for openvswitch
-net-misc/openvswitch -monitor
+net-misc/openvswitch -monitor -modules
