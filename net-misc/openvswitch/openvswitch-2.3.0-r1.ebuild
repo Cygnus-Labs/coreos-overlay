@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug modules monitor +ssl"
 
-RDEPEND=">=sys-apps/openrc-0.10.5
+RDEPEND="
 	ssl? ( dev-libs/openssl )
 	monitor? (
 		${PYTHON_DEPS}
