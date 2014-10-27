@@ -33,7 +33,7 @@
 
 #=dev-libs/libxml2-2.9.0-r1 ~amd64
 
-=sys-apps/util-linux-2.23 ~amd64 
+=sys-apps/util-linux-2.23 ~amd64
 
 # CRIU dependencies
 =dev-libs/protobuf-c-0.15 ~amd64
@@ -72,6 +72,9 @@
 
 # Really really hoping this fixes our compile issues
 =dev-lang/python-2.7.6 ~amd64
+
+# Ranger has not yet been marked as stable.
+=app-misc/ranger-1.6.1 ~amd64
 
 # Kills an annoying warning
 =app-admin/eselect-1.4
