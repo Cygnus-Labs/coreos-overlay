@@ -103,10 +103,14 @@ src_install() {
 	use monitor || rmdir "${ED}/usr/share/ovsdbmonitor"
 	use debug || rm "${ED}/usr/bin/ovs-parse-leaks"
 
-	newconfd "${FILESDIR}/ovsdb-server_conf2" ovsdb-server
-	newconfd "${FILESDIR}/ovs-vswitchd_conf" ovs-vswitchd
-	newinitd "${FILESDIR}/ovsdb-server-r1" ovsdb-server
-	newinitd "${FILESDIR}/ovs-vswitchd-r1" ovs-vswitchd
+	insinto /usr/share/openvswitch
+	newins "${FILESDIR}/ovsdb-server_conf2" ovsdb-server.conf
+	newins "${FILESDIR}/ovs-vswitchd_conf" ovs-vswitchd.conf
+
+	# newconfd "${FILESDIR}/ovsdb-server_conf2" ovsdb-server
+	# newconfd "${FILESDIR}/ovs-vswitchd_conf" ovs-vswitchd
+	# newinitd "${FILESDIR}/ovsdb-server-r1" ovsdb-server
+	# newinitd "${FILESDIR}/ovs-vswitchd-r1" ovs-vswitchd
 
 	systemd_dounit "${FILESDIR}/ovsdb-server.service"
 	systemd_dounit "${FILESDIR}/ovs-vswitchd.service"
