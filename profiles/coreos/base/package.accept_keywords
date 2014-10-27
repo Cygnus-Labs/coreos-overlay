@@ -76,6 +76,9 @@
 # Ranger has not yet been marked as stable.
 =app-misc/ranger-1.6.1 ~amd64
 
+# OpenVSwitch has not yet been marked as stable.
+=net-misc/openvswitch-2.3.0-r1 ~amd64
+
 # Kills an annoying warning
 =app-admin/eselect-1.4
 
