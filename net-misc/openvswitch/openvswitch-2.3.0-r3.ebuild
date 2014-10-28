@@ -103,8 +103,8 @@ src_install() {
 	use monitor || rmdir "${ED}/usr/share/ovsdbmonitor"
 	use debug || rm "${ED}/usr/bin/ovs-parse-leaks"
 
-	systemd_dounit "${FILESDIR}/ovsdb-server.2.service"
-	systemd_dounit "${FILESDIR}/ovs-vswitchd.2.service"
+	systemd_dounit "${FILESDIR}/ovsdb-server.service"
+	systemd_dounit "${FILESDIR}/ovs-vswitchd.service"
 	systemd_newtmpfilesd "${FILESDIR}/openvswitch.tmpfiles" openvswitch.conf
 
 	insinto /etc/logrotate.d
