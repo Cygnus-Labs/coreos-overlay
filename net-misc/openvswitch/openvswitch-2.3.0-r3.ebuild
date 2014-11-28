@@ -116,15 +116,15 @@ src_install() {
 pkg_postinst() {
 	use modules && linux-mod_pkg_postinst
 
-	eingo "-----"
-	einfo "Debug"
-	einfo "${EPREFIX}"
+	elog "-----"
+	elog "Debug"
+	elog "${EPREFIX}"
 
 	local db="${EPREFIX}/var/lib/openvswitch/conf.db"
-	einfo "${db}"
-	einfo "$(sudo find / -name "ovsdb-tool")"
+	elog "${db}"
+	elog "$(sudo find / -name "ovsdb-tool")"
 
-	einfo "Creating new database '${db}'..."
+	elog "Creating new database '${db}'..."
 	"${EPREFIX}/usr/bin/ovsdb-tool" create "${db}" "${EPREFIX}/usr/share/openvswitch/vswitch.ovsschema" || die "creating database failed"
 
 	for pv in ${REPLACING_VERSIONS}; do
