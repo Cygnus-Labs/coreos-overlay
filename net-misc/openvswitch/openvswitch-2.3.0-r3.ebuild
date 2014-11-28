@@ -116,17 +116,18 @@ src_install() {
 pkg_postinst() {
 	use modules && linux-mod_pkg_postinst
 
-	elog "-----"
-	elog "Debug"
-	elog "${EPREFIX}"
-	elog "$(printenv)"
+	# elog "-----"
+	# elog "Debug"
+	# elog "$(printenv)"
+	# the root of the filesystem for the VM is ${SYSROOT}
 
-	local db="${EPREFIX}/var/lib/openvswitch/conf.db"
-	elog "${db}"
+	local db="${SYSROOT}/var/lib/openvswitch/conf.db"
+	# elog "${db}"
 	elog "$(sudo find / -name "ovsdb-tool")"
 
 	elog "Creating new database '${db}'..."
-	"${EPREFIX}/usr/bin/ovsdb-tool" create "${db}" "${EPREFIX}/usr/share/openvswitch/vswitch.ovsschema" || die "creating database failed"
+	# "${EPREFIX}/usr/bin/ovsdb-tool" create "${db}" "${EPREFIX}/usr/share/openvswitch/vswitch.ovsschema" || die "creating database failed"
+	"${SYSROOT}/usr/bin/ovsdb-tool" create "${db}" "${SYSROOT}/usr/share/openvswitch/vswitch.ovsschema" || die "creating database failed"
 
 	for pv in ${REPLACING_VERSIONS}; do
 		if ! version_is_at_least 1.9.0 ${pv} ; then
