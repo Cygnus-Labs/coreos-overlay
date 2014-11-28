@@ -119,6 +119,7 @@ pkg_postinst() {
 	elog "-----"
 	elog "Debug"
 	elog "${EPREFIX}"
+	elog "$(printenv)"
 
 	local db="${EPREFIX}/var/lib/openvswitch/conf.db"
 	elog "${db}"
