@@ -2,7 +2,8 @@
 Description=Open vSwitch Daemon
 Documentation=man:ovs-vswitchd
 Wants=network.target
-Before=network.target
+After=network.target
+# Before=network.target
 Requires=ovsdb-server.service
 After=ovsdb-server.service
 
