@@ -88,6 +88,7 @@ src_test() {
 	# not sure how to find the right directory though
 	cd "${S}"/src
 	make check TESTSUITEFLAGS=-j4 || die "One of the tests failed"
+	# added a comment
 }
 
 src_install() {
