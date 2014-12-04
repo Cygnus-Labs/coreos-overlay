@@ -83,6 +83,13 @@ src_compile() {
 	use modules && linux-mod_src_compile
 }
 
+src_test() {
+	# make sure this happens in the right directory
+	# not sure how to find the right directory though
+	cd "${S}"/src
+	make check TESTSUITEFLAGS=-j4 || die "One of the tests failed"
+}
+
 src_install() {
 	default
 
