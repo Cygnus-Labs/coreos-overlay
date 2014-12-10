@@ -83,13 +83,13 @@ src_compile() {
 	use modules && linux-mod_src_compile
 }
 
-src_test() {
-	# make sure this happens in the right directory
-	# not sure how to find the right directory though
-	cd "${S}"/src
-	make check TESTSUITEFLAGS=-j4 || die "One of the tests failed"
-	# added a comment
-}
+# src_test() {
+# 	# make sure this happens in the right directory
+# 	# not sure how to find the right directory though
+# 	cd "${S}"/src
+# 	make check TESTSUITEFLAGS=-j4 || die "One of the tests failed"
+# 	# added a comment
+# }
 
 src_install() {
 	default
@@ -124,14 +124,18 @@ src_install() {
 pkg_postinst() {
 	use modules && linux-mod_pkg_postinst
 
-	# elog "-----"
-	# elog "Debug"
-	# elog "$(printenv)"
+	elog "-----"
+	elog "Debug"
+	elog "-----"
+	elog "$(printenv)"
+	elog "-----"
 	# the root of the filesystem for the VM is ${SYSROOT}
 
 	local db="${SYSROOT}/var/lib/openvswitch/conf.db"
-	# elog "${db}"
+	elog "${db}"
+	elog "-----"
 	elog "$(sudo find / -name "ovsdb-tool")"
+	elog "-----"
 
 	elog "Creating new database '${db}'..."
 	# "${EPREFIX}/usr/bin/ovsdb-tool" create "${db}" "${EPREFIX}/usr/share/openvswitch/vswitch.ovsschema" || die "creating database failed"
