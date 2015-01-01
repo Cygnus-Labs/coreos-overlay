@@ -124,22 +124,22 @@ src_install() {
 pkg_postinst() {
 	use modules && linux-mod_pkg_postinst
 
-	elog "-----"
-	elog "Debug"
-	elog "-----"
-	elog "$(printenv)"
-	elog "-----"
+	# elog "-----"
+	# elog "Debug"
+	# elog "-----"
+	# elog "$(printenv)"
+	# elog "-----"
 	# the root of the filesystem for the VM is ${SYSROOT}
 
-	local db="${SYSROOT}/var/lib/openvswitch/conf.db"
-	elog "${db}"
-	elog "-----"
-	elog "$(sudo find / -name "ovsdb-tool")"
-	elog "-----"
+	# local db="${SYSROOT}/var/lib/openvswitch/conf.db"
+	# elog "${db}"
+	# elog "-----"
+	# elog "$(sudo find / -name "ovsdb-tool")"
+	# elog "-----"
 
-	elog "Creating new database '${db}'..."
+	# elog "Creating new database '${db}'..."
 	# "${EPREFIX}/usr/bin/ovsdb-tool" create "${db}" "${EPREFIX}/usr/share/openvswitch/vswitch.ovsschema" || die "creating database failed"
-	"${SYSROOT}/usr/bin/ovsdb-tool" create "${db}" "${SYSROOT}/usr/share/openvswitch/vswitch.ovsschema" || die "creating database failed"
+	# "${SYSROOT}/usr/bin/ovsdb-tool" create "${db}" "${SYSROOT}/usr/share/openvswitch/vswitch.ovsschema" || die "creating database failed"
 
 	for pv in ${REPLACING_VERSIONS}; do
 		if ! version_is_at_least 1.9.0 ${pv} ; then
@@ -157,11 +157,11 @@ pkg_postinst() {
 	elog "(will create a database in /var/lib/openvswitch/conf.db)"
 	elog "or to convert the database to the current schema after upgrading."
 
-	ewarn "||::::::::||::::::||:::::::::::::::::::::::::::::"
-	ewarn "++ CYGNUS ++ NOTE ++:::::::::::::::::::::::::::::"
-	ewarn "Ignore the previous messages about the OVS DB"
-	ewarn "We have added this into the pkg_postinst phase"
-	ewarn ":::::::::::::::::::::::::::::::::::::::::::::::::"
+	# ewarn "||::::::::||::::::||:::::::::::::::::::::::::::::"
+	# ewarn "++ CYGNUS ++ NOTE ++:::::::::::::::::::::::::::::"
+	# ewarn "Ignore the previous messages about the OVS DB"
+	# ewarn "We have added this into the pkg_postinst phase"
+	# ewarn ":::::::::::::::::::::::::::::::::::::::::::::::::"
 }
 
 pkg_config() {
